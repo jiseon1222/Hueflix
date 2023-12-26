@@ -1,0 +1,128 @@
+/* body */
+*{
+   margin: 0px;
+   padding: 0px;
+}
+body {
+   margin: 0;
+   padding: 0;
+   background-color: #000;
+   color: white;
+}
+
+.main {
+   width: 1200px;
+   display: flex;
+   justify-content: center;
+   margin: 180px auto 0;
+   align-items: center;
+}
+
+.table {
+   margin: 0 auto;
+   justify-content: center;
+
+}
+
+/* 영화 상세 정보 테이블 */
+table {
+   margin: 0;
+   padding: 0;
+   
+   border-collapse: collapse;
+}
+
+
+th {
+   padding: 5px 10px;
+   color : #ffff;
+   text-align: center;
+   background-color:#000;
+   border-bottom: 1px solid #fff;
+}
+
+td{
+   text-align: center;
+   background-color:#000;
+   padding: 5px 10px;
+   border-bottom: 1px solid #fff;
+   color: white;
+}
+
+tr:nth-child(1) th:nth-child(3){
+   padding: 0 140px;
+}
+
+tr:nth-child(1) th:nth-child(5){
+   padding: 0 70px;
+}
+
+.btn, #searchBtn {
+   color: #f2f2f2;
+   background-color: #333;
+   padding: 5px 0;
+   width: 100px;
+   text-decoration: none;
+   border: none;
+   cursor: pointer;
+   margin: 10px 0;
+}
+
+
+a{
+   text-decoration: none;
+   font-weight: bold;
+   
+}
+
+td a {
+   color: #fff;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+td a:hover {
+   text-decoration: underline;
+}
+
+
+.pagination-container {
+   display:flex;
+   justify-content: center;
+}
+
+.pagination{
+   display:flex;
+   margin-top: 20px;
+   justify-content: center;
+    align-items: center;
+}
+
+.pagination .page-item {
+   margin: 0 5px;
+}
+
+.page-link {
+    color: #fff;
+    background-color: #000;
+    border-color: #444;
+    padding: 10px 15px; /* Optional: Adjust padding as needed */
+  }
+
+  .page-item.active .page-link {
+    z-index: 1;
+    color: #ccc;
+    font-weight: bold;
+    background-color: #333;
+    border-color: #444;
+  }
+
+  .page-link:focus, .page-link:hover {
+    color: #ccc;
+    background-color: #222;
+    border-color: #444;
+  }
+
+h2 {
+   color:#fff;
+}

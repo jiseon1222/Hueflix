@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+
+	<beans:bean id="LoginSuccess" class="com.human.Handler.LoginRedirectHandler" />
+
+	<!-- URL 설정 -->
+	<http use-expressions="true">
+	<csrf disabled="true"/>
+		<intercept-url pattern="/ex/**" access="hasAnyRole('MEMBER,ADMIN')" />
+		<intercept-url pattern="/ex/admin/**" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/ex/member/**" access="hasRole('MEMBER')" />
+
+        <intercept-url pattern="/register" access="permitAll" />
+        <intercept-url pattern="/register/process" access="permitAll" />
+    	
+		<form-login login-page="/login"
+					authentication-success-handler-ref="LoginSuccess"
+					authentication-failure-url="/login?error"
+					username-parameter="userEmail" password-parameter="pw" />
+		<logout logout-url="/ex/logout" invalidate-session="true" />
+	</http>
+
+	<!-- BCryptPasswordEncoder 클래스 빈 추가  -->
+	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+	<!-- provider -->
+	<authentication-manager>
+		<authentication-provider>
+		  <!-- 로그인 시 비밀번호를 암호화해서 DB에서 조회한 비밀번호와 비교 -->
+		  <password-encoder ref="bcryptPasswordEncoder"/>
+		    
+			<jdbc-user-service
+				authorities-by-username-query="select userEmail, authority from authorities where userEmail = ?"
+				users-by-username-query="select userEmail, pw, enabled from users where userEmail = ?"
+				role-prefix="" data-source-ref="dataSource" />
+		</authentication-provider>
+	</authentication-manager>
+
+
+</beans:beans>

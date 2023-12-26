@@ -1,0 +1,75 @@
+body {
+    background-color: black;
+    color: white;
+    margin: 0;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+}
+
+.row {
+    display: flex;
+}
+
+#coverimg img {
+    width: 200px;
+    height: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px; 
+}
+
+.card-body {
+    flex: 0 1 60%;
+    white-space: nowrap; 
+}
+
+.card-title {
+	font-size : 20px;
+}
+
+.card-title,
+.card-text {
+    color : white;
+}
+
+.tabBar {
+    display: flex;
+    background-color: #000000; 
+    padding: 15px; 
+}
+
+.tabItem {
+    padding: 10px 15px;
+    color: #fff; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.activeTab {
+    background-color: #555; 
+}
+
+.tabItem:hover {
+    background-color: #555; 
+}
+
+#searchResultText {
+    font-size: 20px; 
+    padding-left: 15px;
+}
+.col-md-8{
+	padding:15px;
+}

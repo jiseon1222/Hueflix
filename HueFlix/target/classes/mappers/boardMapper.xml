@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.human.dao.BoardDao">
+<insert id="insertBoard">
+insert into notice(bid, userName, bGroupKind, bTitle, bContent) 
+values(bid_board.nextval, #{userName}, #{bGroupKind}, #{bTitle}, #{bContent})
+</insert>
+
+<select id="readBoard" resultType="BoardDto">
+select * from notice where bid = #{bid}
+</select>
+
+<!-- 데이터베이스의 board 테이블에서 특정 조건을 만족하는 레코드들을 선택하는 쿼리 -->
+<select id="listAll" resultType="com.human.dto.BoardDto">
+select * from notice 
+</select>
+
+<sql id='search'>
+	<if test="searchType == 'btnc'.toString()">and (bTitle like '%' || #{keyword} || '%' or userName like '%' || #{keyword} || '%' or bContent like '%' || #{keyword} || '%')</if>
+	<if test="searchType == 'bt'.toString()">and bTitle like '%' || #{keyword} || '%'</if>
+	<if test="searchType == 'bn'.toString()">and userName like '%' || #{keyword} || '%'</if>
+	<if test="searchType == 'bc'.toString()">and bContent like '%' || #{keyword} || '%'</if>
+</sql>
+<select id="selectByGroupKind" resultType="com.human.dto.BoardDto">
+    <![CDATA[
+        SELECT * FROM notice WHERE bGroupKind LIKE '%' || #{bGroupKind} || '%'
+            AND (bGroupKind = #{bGroupKind} OR #{bGroupKind} IS NULL)
+        ORDER BY bid DESC, bWriteTime DESC
+    ]]>
+</select>
+
+<select id="menuKind" resultType="String">
+    
+       <![CDATA[
+        SELECT DISTINCT bGroupKind
+        FROM notice
+    ]]>
+
+</select>
+
+<!-- 페이징처리 -->
+<select id="listSearch" resultType="com.human.dto.BoardDto" parameterType="com.human.vo.PageMaker">
+    <![CDATA[
+    SELECT * FROM (
+        SELECT notice.*, ROW_NUMBER() OVER (ORDER BY bid) AS rn
+        FROM notice
+        WHERE 1=1
+    ]]>
+
+    <!-- include 는 refid 옆에 입력한 search를 찾아간다 위에 sql id='search'로 찾아간다. -->      
+    <include refid="search"/>
+
+    <![CDATA[
+    ) WHERE rn BETWEEN ((#{page} - 1) * #{perPageNum}) + 1 AND #{page} * #{perPageNum}
+    ]]>
+</select>
+<delete id="delete"> delete from notice where bid = #{bid} </delete>
+<!-- 모든 글 카운트 -->
+<select id="listSearchCount" resultType="int">
+<![CDATA[ select count(bid) from notice where 1=1 ]]>
+<include refid="search"/>
+<![CDATA[ and bid > 0 ]]>
+</select>
+
+<update id="bHit">
+update notice set bHit = bHit+1 where bid = #{bid}
+</update>
+
+<update id="updateBoard">
+update notice set bTitle = #{bTitle}, bContent = #{bContent} where bid = #{bid}
+</update>
+
+</mapper>

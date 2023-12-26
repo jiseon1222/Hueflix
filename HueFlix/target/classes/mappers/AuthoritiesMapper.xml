@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.human.dao.AuthoritiesDao">
+
+<!-- 권한 부여 (기본값: MEMBER)-->
+<insert id="insert">
+insert into authorities(userEmail) values(#{userEmail})
+</insert>
+
+<!-- 모든 유저 권한 조회 -->
+<select id="selectAll" resultType="AuthoritiesDto">
+select * from authorities
+</select>
+
+<!-- 해당 유저 권한 조회 -->
+<select id="selectUser" resultType="String">
+select authority from authorities where userEmail=#{userEmail}
+</select>
+
+<!-- 해당 유저 권한 업데이트 -->
+<update id="update">
+update authorities set authority=#{newAuthority} where userEmail=#{userEmail}
+</update>
+
+<!-- 해당 유저 삭제 -->
+<delete id="delete">
+delete authorities where userEmail=#{userEmail}
+</delete>
+</mapper>

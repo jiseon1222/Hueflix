@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.human.dao.CommentDao">
+	<select id="list" resultType="com.human.dto.CommentDto">
+		select
+		*
+		from
+		comments
+		where movieId =
+		#{movieId}
+		order by rId desc
+	</select>
+	<select id="read" resultType="com.human.dto.CommentDto">
+	select * from comments where rId =
+		#{rId} order by rWriteTime desc
+	</select>
+	
+	<select id="listCommentPage" resultType="CommentDto">
+    <![CDATA[
+    select * from comments where 
+    movieId=#{movieId} order by rWriteTime desc
+    offset (#{pm.page}-1)*#{pm.perPageNum} rows fetch next #{pm.perPageNum} rows only
+    ]]>
+</select>
+	
+	
+	<select id="count" resultType="int">
+    <![CDATA[ select count(rId) from comments where movieId=#{movieId} ]]>
+</select>
+	
+	
+	<insert id="insert">
+		insert into comments (rId,movieId, rContent,starScore, nickname)
+		values (rId.nextval,#{movieId},#{rContent},#{starScore}, #{nickname})
+	</insert>
+
+<!-- <insert id="Comments">
+		INSERT INTO Comments (
+		bId,rId, rName,rContent,rGroup,rStep,rIndent
+		) VALUES (
+		#{bId},rId.nextval,
+		#{rName},#{rContent},#{rGroup}
+		,#{rStep},#{rIndent}
+		)
+
+	</insert>
+	<update id="CommentsUpdate">
+		update Comments set rStep = rStep+1 where rGroup =
+		#{rGroup} and rStep >
+		#{rStep}
+	</update> -->
+
+	<!-- <update id="update">
+		update Comments set rContent = #{rContent},
+		rUpdateTime = sysdate
+		where rId = #{rId}
+	</update> -->
+
+	<delete id="delete">
+		delete from comments where rId =#{rId}
+	</delete>
+ 
+<!-- 	<select id="listPage" resultType="com.human.dto.CommentDto">
+		<![CDATA[
+		select
+		rId, bId, rContent, rName, rWriteTime, rUpdateTime
+		from
+		(
+		select /*+INDEX_DESC(Comments pk_Comments))*/
+		rownum rn, rId, bId, rContent, rName, rWriteTime, rUpdateTime
+		from Comments
+		where bId = #{bId}
+		and rId > 0
+		and rownum <= #{pm.page} * #{pm.perPageNum}
+		)
+		where rn > ( #{pm.page} -1) * #{pm.perPageNum}
+		]]>
+	</select>
+ <select id="count" resultType="int">
+ <![CDATA[
+ select 
+   count(bId) 
+ from 
+   Comments 
+ where 
+   bId =#{bId} 
+ ]]>
+ </select> -->
+
+
+
+</mapper>
+

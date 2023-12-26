@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman to Korean Converter</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <input type="text" id="romanInput" placeholder="Enter Roman text">
+    <p id="koreanOutput"></p>
+
+    <script>
+        $(document).ready(function() {
+            // 페이지 로드 시 자동으로 변환 수행
+            convertToKorean();
+        });
+
+        function convertToKorean() {
+            var romanText = $('#romanInput').val();
+            
+            // AJAX 호출을 통해 서버에 로마자를 전송하고, 서버에서 한글로 변환된 결과를 받아옵니다.
+            $.ajax({
+                type: 'POST',
+                url: '/convert',
+                data: { romanText: romanText },
+                success: function(response) {
+                    $('#koreanOutput').text(response.koreanText);
+                    // 서버에서 받은 한글 결과를 koreanOutput에 출력
+                },
+                error: function(error) {
+                    console.error('Error during conversion:', error);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

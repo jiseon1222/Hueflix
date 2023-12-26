@@ -1,0 +1,66 @@
+* {
+   margin: 0;
+   padding: 0;
+   background-color: black;
+   color: white;
+}
+
+.main {
+   width: 800px;
+   display: flex;
+   justify-content: center;
+   margin: 180px auto 0;
+   flex-direction: column;
+}
+
+.btn {
+   color: #f2f2f2;
+   background-color: #333;
+   padding: 5px 0;
+   width: 100px;
+   text-decoration: none;
+   border: none;
+   cursor: pointer;
+   margin: 10px 0;
+}
+
+a {
+   text-decoration: none;
+   color: #fff;
+}
+
+.pagination {
+   margin-bottom: 400px;
+}
+
+.form-control[readonly] {
+   background-color: transparent; /* readonly 상태에서 배경색 유지 */
+   color: white;
+   box-shadow: none;
+}
+
+.box-header {
+   border-bottom: 1px solid white;
+   padding-bottom: 10px;
+   margin-bottom: 20px;
+}
+
+.form-control {
+   background-color: transparent;
+   color: white;
+   border: 1px solid white;
+   width: 800px;
+   padding: 10px;
+   border-radius: 5px;
+   margin: 10px 0 20px;
+}
+
+.btn-primary, .btn-warning, .btn-danger {
+   background-color: #333;
+   color: white;
+   border: 1px solid white;
+}
+
+.form-group label {
+   font-weight: bold;
+}

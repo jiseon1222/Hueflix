@@ -1,0 +1,248 @@
+@charset "UTF-8";
+/* 로고 */
+@import url('https://fonts.googleapis.com/css2?family=Palanquin+Dark&display=swap');
+/* 메인 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&display=swap');
+/* 붎편 */
+*{
+   margin: 0px;
+   padding: 0px;
+}
+/* header */
+header {
+	width: 100%;
+	background: #000000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	min-width: 530px;
+	width: 100%;
+}
+
+header .inner {
+    padding-bottom: 10px; 
+    display: flex;
+    justify-content: space-between;
+}
+
+header .lower {
+    padding-bottom: 10px;  
+}
+
+ul, ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+a#loginLink {
+	margin-left: 10px;
+}
+
+/* 로고 */
+header .inner .logo h1 a {
+	font-family: 'Palanquin Dark', sans-serif;
+	color: #FFFFFF;
+	margin-left: 30px;
+}
+
+/* 헤더 상단(로그인, 검색창) */
+header .inner .search {
+	top: 0px;
+	right: 0px;
+	display: flex;
+	margin-left: auto;
+	margin-right: 20px;
+	align-items: center;
+}
+
+/* 검색창 */
+header .inner .searchForm{
+  	white-space: nowrap;
+  	position: relative;
+  	font-family: "orbitron";
+  	display: inline-block; 
+    vertical-align: middle; 
+    margin-right: 15px;
+}
+
+header .inner input#searchTerm {
+	background-color: #222;
+	color: #fff;
+	border: none;
+	width: 160px;
+  	height: 30px;
+  	padding: 0 10px;
+}
+
+header .inner #searchButton {
+	border: none;
+	background-color: #222;
+	color: #fff;
+	width: 30px;
+	height: 30px;
+	margin-left: -10px;
+	cursor: pointer;
+}
+
+header .inner input#searchTerm:focus,
+header .inner #searchButton:focus {
+    outline: none;
+}
+
+/* 사용자 드롭다운 메뉴 */
+header .inner .search .headerToggle {
+	right: 10px;
+	top: 5px;
+}
+
+header .inner .search .headerToggle #toggle {
+	display: none;
+}
+
+/* 토글 버튼 */
+label[for='toggle'] {
+	font-size: 15px;
+	font-weight: bold;
+	color: #fff;
+	cursor: pointer;
+	margin-left: 15px;
+}
+
+header .inner .search .headerToggle #toggle + .myMenu {
+	display: none;
+}
+
+header .inner .search .headerToggle #toggle:checked + .myMenu {
+	display: block;
+	z-index: 1000;
+}
+
+header .inner .search .headerToggle .myMenu {
+	position: absolute;
+	width: 255px;
+    height: 100px;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #000;
+    border: 1px solid #222;
+    z-index: 1000;
+    align-items: center; 
+}
+
+/* 프로필 이미지 */
+header .inner .search .headerToggle .myMenu .pImg {
+	width: 95px;
+	height: 100px;
+}
+
+header .inner .search .headerToggle .myMenu .pImg img {
+	width: 85px;
+	height: 85px;
+	margin-top: 7.5px; 
+	margin-left: 5px
+}
+
+/* 프로필 드롭다운 유저 정보 */
+header .inner .search .headerToggle .myMenu .myMenuProfile {
+	position: absolute;
+	top: 0;
+	margin-top: 15px;
+	margin-left: 100px;
+	width: 100%;
+}
+
+header .inner .search .headerToggle .myMenu .myMenuProfile #nickname {
+	font-weight: bold;
+	color: #fff;
+}
+
+header .inner .search .headerToggle .myMenu .myMenuProfile #email {
+	color: #969696;
+	font-size: 13px;
+}
+
+/* 프로필 드롭다운 메뉴 링크 */
+header .inner .search .headerToggle .myMenu .myMenuLink {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin-bottom: 15px;
+	width: 160px;
+	text-align: left;	
+	color: #222;
+}
+
+header .inner .search .headerToggle .myMenu .myMenuLink a {
+	color: #969696;
+	font-weight: 500;
+}
+
+header .inner .search .headerToggle .myMenu .myMenuLink a:hover {
+	color: #fff;
+	font-weight: 500;
+}
+
+/* 로그인 링크 */
+header .inner .search a {
+	font-family: 'Gothic A1', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	color: #fff;
+	padding: 0px 5px;
+	margin-right: 5px;
+}
+
+/* 메인 메뉴 */
+header .lower #gnb {
+	position: relative;
+	text-align: center;
+	box-sizing: border-box;
+	padding-top: 40px 0;
+    text-decoration: none;
+    display: flex;
+}
+
+header .lower #gnb li {
+	display: inline-block;
+	width: 25%;
+	box-sizing: border-box;
+}
+
+header .lower #gnb li a {
+	font-family: "orbitron";
+	font-weight: 400;
+	color: #FFFFFF;
+	padding: 10px 0;
+	transition: all 0.5s;
+	display: block;
+	width: 100%;
+  	box-sizing: border-box;
+	position: relative;
+   	text-decoration: none;
+}
+
+header .lower #gnb li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s ease; /* Animation transition */
+}
+
+header .lower #gnb li a:hover::after {
+    background-color: #FFFFFF; /* Change to desired underline color */
+}
+#gnb li a.active{
+    border-bottom: 1px;
+}
+
+header .lower #gnb li a.active::after, header .lower #gnb li a:hover::after {
+	border-bottom: 1px solid #FFFFFF;
+}

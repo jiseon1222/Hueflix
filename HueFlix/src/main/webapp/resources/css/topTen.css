@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+/* 랭크 숫자 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	color: #fff;
+	font-family: "orbitron";
+} 
+
+ul, ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.topTen{
+	position: relative;
+	padding-top: 120px;
+	align-items: center;
+	margin-bottom: 100px;
+}
+
+/* top 10 슬라이드 */
+.topTenSwiper {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+/* 좌우 버튼  */
+.topTenSwiper .swiper-button-prev, .swiper-button-next {
+	filter: grayscale(100%) brightness(3);
+}
+
+/* 페이지네이션 (Swiper에 기본 적용된 CSS 때문에 커스터마이징 시 !important 적용해야 함) */
+.topTenSwiper .swiper-pagination {
+	position: absolute;
+	bottom: 0% !important;
+}
+
+.topTenSwiper .swiper-pagination-bullet {
+	width: 8px !important;
+	height: 8px !important;
+	background: transparent !important;
+	border: 1px solid #fff !important;
+	margin: 0 10px !important;
+}
+
+.topTenSwiper .swiper-pagination-bullet-active {
+	background: #fff !important;
+	border-color: #fff !important;
+}
+
+/* 상영작 Top 10 (좌측 상단 표시) */
+.topTenSwiper h1 {
+	font-weight: normal;
+	font-size: 3vw;
+	letter-spacing: 1px;
+	position: absolute;
+	left: 5%;
+	top: 5%;
+	z-index: 10; 다른 요소 위에 제목 표시
+}
+
+.topTenSwiper .swiper-slide {
+	position: relative; 
+}
+
+.topTenSwiper .swiper-slide img {
+	width: 100%;
+}
+
+.topTenSwiper .swiper-slide .rank {
+	position: absolute;
+	right: 8%;
+	top: 1%;
+	color: transparent; 
+	-webkit-text-stroke: 2px rgba(255, 255, 255, 0.7);
+	z-index: 10;
+	font-size: 10vw;
+	font-family: 'Anton', sans-serif;
+	font-style: italic;
+} 
+
+.topTenSwiper .swiper-slide .title {
+	position: absolute;
+	font-weight: bold;
+	left: 5%;
+	bottom: 25%;
+	font-size: 4vw;
+	z-index: 10;
+}
+
+.topTenSwiper .swiper-slide .rating {
+	position: absolute;
+	left: 5%;
+	bottom: 20%;
+	font-size: 2vw;
+	z-index: 10;
+}
+
+ .topTenSwiper .swiper-slide .genres {
+	position: absolute;
+	left: 15%;
+	bottom: 20%;
+	font-size: 2vw;
+	z-index: 10;
+}
+ 
+.topTenSwiper .swiper-slide .tagline {
+	position: absolute;
+	left: 5%;
+	bottom: 12%;
+	font-size: 2.5vw;
+	font-style: italic;
+	color: rgba(255, 255, 255, 0.5);
+	z-index: 10;
+}  
+
+/* 위쪽 그라데이션 */
+.topTenSwiper .swiper-slide::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 30%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 1.2),
+		rgba(0, 0, 0, 0));
+	opacity: 1; /* 마우스 액션과 상관없이 항상 표시 */
+}
+
+/* 아래쪽 그라데이션 */
+.topTenSwiper .swiper-slide::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 45%;
+	background: linear-gradient(to top, rgba(0, 0, 0, 1.2), rgba(0, 0, 0, 0));
+	opacity: 1; /* 마우스 액션과 상관없이 항상 표시 */
+}
+
+/*==========================================================*/
+@media screen and (min-width: 1280px) {
+	/* 상영작 Top 10 (좌측 상단 표시) */
+	.topTenSwiper h1 {
+		font-size: 2vw;
+		left: 17%;
+	}
+	
+	.topTenSwiper .swiper-slide .title {
+		font-size: 3vw;
+	}
+
+	.topTenSwiper .swiper-slide .rating {
+		font-size: 1.5vw;
+	}
+	
+	 .topTenSwiper .swiper-slide .genres {
+		left: 16%;
+		font-size: 1.5vw;
+	}
+	 
+	.topTenSwiper .swiper-slide .tagline {
+		bottom: 12%;
+		font-size: 1.8vw;
+		font-style: italic;
+	}
+}
