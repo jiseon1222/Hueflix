@@ -87,10 +87,23 @@ API를 활용하여 데이터를 읽어오며, 포스터를 클릭하면 영화 
 
 ### 영화상세정보
 #### 1. 줄거리
+TMDB API를 통해 tagline, overview 추출
+![줄거리](https://github.com/jiseon1222/Hueflix/assets/148019130/87c3cf5c-7751-4607-98e5-53cdefd7defd)
+
 #### 2. 출연진
+TMDB API의 index를 활용하여 주연, 조연 구분하여 cast 추출
+![출연](https://github.com/jiseon1222/Hueflix/assets/148019130/adb1c5c9-dff6-450d-85d4-55fe5977880b)
+
 #### 3. 영상/포토
+TMDB API와 KMDB API의 영화명과 개봉일을 엮어서 stills, video 출력, 이미지 클릭시 팝업창 띄움
+![영상포토](https://github.com/jiseon1222/Hueflix/assets/148019130/e1b33c6e-da4e-4abc-a678-498bf3587bf4)
+
 #### 4. 평점/댓글
+radio를 활용하여 평점 표현, 관리자만 댓글 삭제 가능
+![댓글작성(관리자)](https://github.com/jiseon1222/Hueflix/assets/148019130/51682b0d-6caa-470c-8a4e-8e09077e97ab)
+![댓글작성(사용자)](https://github.com/jiseon1222/Hueflix/assets/148019130/2614fafe-5f7c-4d80-814c-31889525e66f)
 
-
-
+### 검색
+검색창의 문자열을 API를 통해 데이터를 읽어오며, 포스터를 클릭하면 영화 상세 정보 페이지로 이동합니다.
+![검색창](https://github.com/jiseon1222/Hueflix/assets/148019130/edb056b1-0de0-4d9e-a5b0-262e29bd70e0)
 
