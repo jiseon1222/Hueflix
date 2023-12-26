@@ -7,11 +7,11 @@
 	<body>
     <script>
         $(document).ready(function() {
-            // URL에서 쿼리 매개변수 추출
 	    var currentPage = window.location.href;
             if (currentPage.includes("/board/movieDetail/cast")) {
                 document.getElementById("cast").classList.add("active");
             }
+	    // URL에서 쿼리 매개변수 추출
             const urlParams = new URLSearchParams(window.location.search);
             const movieId = urlParams.get('movieId');
             var tmdbTitle;
