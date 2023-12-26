@@ -12,14 +12,14 @@
     
     <script>
 $(document).ready(function() {
-	// URL에서 쿼리 매개변수 추출
-	const urlParams = new URLSearchParams(window.location.search);
-	const movieId = urlParams.get('movieId');
-	var tmdbTitle;
-	var tmdbReleaseDate;
+    // URL에서 쿼리 매개변수 추출
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieId = urlParams.get('movieId');
+    var tmdbTitle;
+    var tmdbReleaseDate;
 	
-	document.getElementById("info").addEventListener("click", function() {
-        window.location.href = "<%= request.getContextPath() %>/board/movieDetail/info?movieId=" + movieId;
+    document.getElementById("info").addEventListener("click", function() {
+	window.location.href = "<%= request.getContextPath() %>/board/movieDetail/info?movieId=" + movieId;
     });
 
     document.getElementById("cast").addEventListener("click", function() {
