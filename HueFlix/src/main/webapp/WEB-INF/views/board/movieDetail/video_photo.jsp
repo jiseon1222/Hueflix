@@ -8,6 +8,10 @@
 	<body>
     <script>
         $(document).ready(function() {
+	    var currentPage = window.location.href;
+  	    if (currentPage.includes("/board/movieDetail/video_photo")) {
+                document.getElementById("video_photo").classList.add("active");
+            }
             // URL에서 쿼리 매개변수 추출
             const urlParams = new URLSearchParams(window.location.search);
             const movieId = urlParams.get('movieId');
