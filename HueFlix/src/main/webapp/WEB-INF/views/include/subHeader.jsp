@@ -11,21 +11,6 @@
     <link rel="stylesheet" type="text/css" href="/ex/resources/css/subHeader.css">
     
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // 함수를 사용하여 메뉴 활성화 상태를 설정
-        function setActiveButton() {
-            var currentPath = window.location.pathname;
-
-            buttons.forEach(function (button) {
-                if (button.getAttribute("id") === currentPath.substr(currentPath.lastIndexOf('/') + 1)) {
-                    button.classList.add("active");
-                } else {
-                    button.classList.remove("active");
-                }
-            });
-        }
-    });
-
 $(document).ready(function() {
 	// URL에서 쿼리 매개변수 추출
 	const urlParams = new URLSearchParams(window.location.search);
@@ -159,7 +144,6 @@ $(document).ready(function() {
 		<button id="cast">출연</button>
 		<button id="video_photo">영상/포토</button>
 		<button id="reply">평점/댓글</button>
-		<div class="bin"></div>
 	</div>
 	<div id="menuShow">
 	
