@@ -40,7 +40,24 @@ API를 활용한 영화 정보 프로그램으로, 상세한 영화 정보와 �
  Spring Security를 사용하여 보안을 설정하고 있습니다.
  - 회원가입: 이메일 형식 일치 확인, ID/닉네임 중복 확인, 비밀번호 일치 확인, 모든 항목 입력시 회원가입 버튼 활성화
  ![회원가입](https://github.com/jiseon1222/Hueflix/assets/148019130/8f999c3d-da89-4206-a398-98b3a3610492)
- - 로그인:
+ - 로그인: 권한별 로그인, DB에서 패스워드 암호화
+ ```` xml
+<!-- BCryptPasswordEncoder 클래스 빈 추가  -->
+<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+<!-- provider -->
+<authentication-manager>
+    <authentication-provider>
+        <!-- 로그인 시 비밀번호를 암호화해서 DB에서 조회한 비밀번호와 비교 -->
+        <password-encoder ref="bcryptPasswordEncoder"/>
+            
+        <jdbc-user-service
+            authorities-by-username-query="select userEmail, authority from authorities where userEmail = ?"
+            users-by-username-query="select userEmail, pw, enabled from users where userEmail = ?"
+            role-prefix="" data-source-ref="dataSource" />
+    </authentication-provider>
+</authentication-manager>
+ ````
  ![로그인](https://github.com/jiseon1222/Hueflix/assets/148019130/6050d27c-76e2-4286-8e65-0b0245fc2306)
 
 
