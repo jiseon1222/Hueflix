@@ -75,7 +75,7 @@
 		    		</c:when>
 		    		
 		        	<c:otherwise>
-		            	<a id="loginLink" href="login">로그인</a>
+		            	<a id="loginLink" href="/ex/login">로그인</a>
 		            </c:otherwise>
 		        </c:choose>  
 		        <!-- end c:choose --> 
